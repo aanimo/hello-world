@@ -1,13 +1,17 @@
 cash=int(input('Внесите деньги:'))
 while True:
+     if cash==0:
+         break
      print('Ваши деньги:',cash)
      x=input("Во что играем? \na)Рулетка b)Блэкджек:")
      if x=='a':
             print('Ваши деньги:',cash)
             import random
             while True:
+                if cash==0:
+                    print('Недостаточно денег')
+                    break
                 bet=int(input('Введите вашу ставку:'))
-                if cash==0: break
                 x1=random.randint(1,7)
                 x2=random.randint(1,7)
                 x3=random.randint(1,7)
