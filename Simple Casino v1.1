@@ -37,11 +37,12 @@ while True:
                     count=0
                     deck=[2,3,4,5,6,7,8,9,10]*4
                     random.shuffle(deck)
-                    while True:
-                     y=input('Чтобы начать играть нужно заплатить 500.Заплатить?\n y/да \n n/нет ')
-                     if y=='y' and cash>=500:
-                      x=input('Взять карту?\n y/да \n n/нет\n')
-                      if x=='y':
+                    y=input('Чтобы начать играть нужно заплатить 1000.Заплатить?\n y/да \n n/нет ')
+                    if y=='y' and cash>=1000:
+                      cash-=1000
+                      while True:
+                       x=input('Взять карту?\n y/да \n n/нет\n')
+                       if x=='y':
                               random_card=random.choice(deck)
                               count+=random_card
                               print("У вас",count)
@@ -53,13 +54,8 @@ while True:
                                     cash+=cash/2
                                     print('Вы выиграли')
                                     break
-                              else:
-                                 cash-=cash/2
-                                 break
-                     elif y=='y' and cash<500:
+                    elif y=='y' and cash<1000:
                         print('Недостаточно денег')
-                        break
-                     elif y=='n':
                         break
      else: 
          break
