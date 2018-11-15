@@ -1,0 +1,66 @@
+cash=int(input('Внесите деньги:'))
+while True:
+     print('Ваши деньги:',cash)
+     x=input("Во что играем? \na)Рулетка b)Блэкджек:")
+     if x=='a':
+            print('Ваши деньги:',cash)
+            import random
+            while True:
+                bet=int(input('Введите вашу ставку:'))
+                if cash==0: break
+                x1=random.randint(1,7)
+                x2=random.randint(1,7)
+                x3=random.randint(1,7)
+                print('Выпали числа',x1,x2,x3)
+                if x1==x2 or x2==x3 or x3==x1:
+                    bet=bet * 1.5
+                    cash=cash+bet
+                    print('У вас',cash)
+                    a=input('Продолжить?\ny/да \nn/нет:')
+                    if a=='n':
+                         break
+                elif x1==x2 and x2==x3:
+                    bet=bet * 3
+                    cash=cash+bet
+                    print('У вас',cash)
+                    a=input('Продолжить?\ny/да \nn/нет:')
+                    if a=='n':
+                         break
+                else:
+                    cash=cash-bet
+                    print('У вас',cash)
+                    a=input('Продолжить?\ny/да \nn/нет:')
+                    if a=='n':
+                         break
+     elif x=='b':
+                    import random
+                    count=0
+                    deck=[2,3,4,5,6,7,8,9,10]*4
+                    random.shuffle(deck)
+                    while True:
+                     y=input('Чтобы начать играть нужно заплатить 500.Заплатить?\n y/да \n n/нет ')
+                     if y=='y' and cash>=500:
+                      x=input('Взять карту?\n y/да \n n/нет\n')
+                      if x=='y':
+                              random_card=random.choice(deck)
+                              count+=random_card
+                              print("У вас",count)
+                              if count>21:
+                                   print('Вы проиграли')
+                                   cash-=cash/2
+                                   break
+                              elif count==21:
+                                    cash+=cash/2
+                                    print('Вы выиграли')
+                                    break
+                              else:
+                                 cash-=cash/2
+                                 break
+                     elif y=='y' and cash<500:
+                        print('Недостаточно денег')
+                        break
+                     elif y=='n':
+                        break
+     else: 
+         break
+
